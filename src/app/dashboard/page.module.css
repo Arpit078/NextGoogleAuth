@@ -1,0 +1,43 @@
+/* src/app/dashboard/page.module.css */
+.dashboard {
+  text-align: center;
+  padding: 2rem;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.user-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.user-name {
+  font-size: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+.user-email {
+  font-size: 1rem;
+  color: #666;
+}
+
+.sign-out-button {
+  margin-top: 2rem;
+  padding: 0.5rem 1rem;
+  background-color: #ff0000;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.sign-out-button:hover {
+  background-color: #cc0000;
+}
