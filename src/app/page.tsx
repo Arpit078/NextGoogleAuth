@@ -10,8 +10,7 @@ function Home() {
           </div>
     
           <div className={styles.sub_text}>
-            Docker browsers in the cloud for you to feel safe in the shady jungle of
-
+            Docker browsers in the cloud for you to feel safe in the shady jungle of Internet :)
           </div>
           <Login/>
           

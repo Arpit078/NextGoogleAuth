@@ -16,28 +16,36 @@ function Login() {
     }
   }, [session, router]);
 
-  const handleSignIn = () => {
-    signIn('google', { callbackUrl: '/dashboard' });
+  const handleSignIn = async () => {
+    // Start the Google sign-in process
+    try {
+      // Initiate Google sign-in
+      const result = await signIn('google', { redirect: false });
+
+      // if (result?.ok) {
+      //   const response = await fetch('http://localhost:5000/api/auth');
+      //   const data = await response.json();
+
+      //   if (response.ok && data.token) { 
+      //     localStorage.setItem('jwtToken', data.token);
+
+      //     router.push('/dashboard');
+      //   } else {
+      //     // Handle errors from the API call
+      //     console.error('Failed to fetch token:', data.message || 'Unknown error');
+      //   }
+      // } else {
+      //   // Handle unsuccessful sign-in
+      //   console.error('Sign-in failed:', result?.error || 'Unknown error');
+      // }
+    } catch (error) {
+      console.error('Error during sign-in:', error);
+    }
   };
 
   return (
     <>
-      {session?.user ? (
-        <div className='flex gap-x-2 items-center'>
-          <Link href="/dashboard" className='text-blue-500 hover:underline'>Dashboard</Link>
-          <p>{session.user.name} {session.user.email}</p>
-          <Image 
-            src={session.user.image || '/default-avatar.png'} 
-            alt="User Avatar" 
-            width={40} 
-            height={40} 
-            className='rounded-full cursor-pointer' 
-          />
-          <button onClick={() => signOut()} className='bg-red-500 text-white px-4 py-2 rounded'>
-            Log Out
-          </button>
-        </div>
-      ) : (
+      
         <button 
           onClick={handleSignIn} 
           className='bg-black text-white px-4 py-2 rounded flex items-center hover:bg-gray-800'
@@ -51,7 +59,6 @@ function Login() {
           />
           <span>Sign in with Google</span>
         </button>
-      )}
     </>
   );
 }
